@@ -24,4 +24,9 @@ Follow these steps to download and play the Game:
 
 ## How to Report Bugs or Provide Feedback
 
-* If you encounter any bugs or have suggestions for improvement, please open an issue on the [**GitHub Issues**](link-to-your-github-issues-page) page of this project.
+* If you encounter any bugs or have suggestions for improvement, please open an issue on the [**GitHub Issues**]([link-to-your-github-issues-page](https://github.com/BurakEArik/quiz-game/issues)) page of this project.
+
+
+## Author
+
+* **Burak E. Arık (Muhtar)**
