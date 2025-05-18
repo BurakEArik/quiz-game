@@ -30,3 +30,5 @@ Follow these steps to download and play the Game:
 ## Author
 
 * **Burak E. Arık (Muhtar)**
+
+## License
