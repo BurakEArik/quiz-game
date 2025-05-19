@@ -32,3 +32,5 @@ Follow these steps to download and play the Game:
 * **Burak E. Arık (Muhtar)**
 
 ## License
+
+This project is licensed under the GPL License - see the [LICENSE.md](LICENSE.md) file for details.
