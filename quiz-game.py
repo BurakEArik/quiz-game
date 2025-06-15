@@ -1,56 +1,37 @@
-import random
 import json
+import random
 
-x = 0
-y = -1
-z = 0
-# Kelime listesi (güncel haliyle)
-with open('words.json', 'r', encoding="utf-8") as file:
-    words_ = json.load(file)
-words = eval(str(words_["words"]))
-seed = random.randint(2,1000)
-random.seed(seed)
+# JSON'dan kelimeleri oku
+with open("words.json", "r", encoding="utf-8") as f:
+    words_data = json.load(f)
 
-def word_game():
-    print("Welcome to the Word Guessing Game!")
-    print("Type 'quit' to exit the game or 'b' to reveal the answer.")
-    global x
-    global y
-    global z
+words = list(words_data["words"].items())
+random.shuffle(words)
+
+correct = 0
+total = 0
+
+print("Çıkmak için 'quit' yazabilirsin.\n")
+
+for english, turkish in words:
+    answer = input(f"{english} : ").strip().lower()
     
-    while True:
-        # Rastgele bir kelime seç
-        
-        english_word, turkish_translation = random.choice(list(words.items()))
-        print(f"\nWhat is the meaning of        '{english_word}'      in Turkish?")
-        y += 1
-        attempts_left = 3  # Her soru için 3 deneme hakkı
-        
-        while attempts_left > 0:
-            guess = input(f"Your guess (Attempts left: {attempts_left}): ").strip().lower()
-            
-            
-            if guess == "quit":
-                print("Thanks for playing! Goodbye!")
-                z = (x * 100) / y
-                print("\nDoğru / Soru "f"\n  {x} / {y}" + f"\t%{int(z)}" )
-                return
-            
-            if guess == "b":
-                print(f"The correct answer is: '{turkish_translation}'")
-                break
-            
-            if guess == turkish_translation.lower():
-                print("🎉 Correct! You guessed it right.")
-                x += 1
-                break
-            else:
-                attempts_left -= 1
-                print("❌ Incorrect guess. Try again!")
+    if answer == "quit":
+        break
 
-        if attempts_left == 0:
-            print(f"😞 Out of attempts! The correct answer was: '{turkish_translation}'")
+    total += 1
+    if answer == turkish.lower():
+        correct += 1
+        print("Doğru!\n")
+    else:
+        print(f"Yanlış! Doğru cevap: {turkish}\n")
 
-# Oyunu başlat
-word_game()
+# Sonuçları göster
+print("\nOyun Bitti!")
+print(f"Doğru Sayısı: {correct}/{total}")
+if total > 0:
+    print(f"Başarı Oranı: %{correct / total * 100:.2f}")
+else:
+    print("Hiç cevap verilmedi.")
 
+input("\nÇıkmak için Enter'a basın...")
