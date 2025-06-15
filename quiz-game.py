@@ -5,7 +5,7 @@ x = 0
 y = -1
 z = 0
 # Kelime listesi (güncel haliyle)
-with open('words.json', 'r') as file:
+with open('words.json', 'r', encoding="utf-8") as file:
     words_ = json.load(file)
 words = eval(str(words_["words"]))
 seed = random.randint(2,1000)
